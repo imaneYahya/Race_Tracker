@@ -24,20 +24,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.BoxWithConstraintsScope
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -48,7 +36,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
@@ -161,7 +148,7 @@ private fun StatusWithIcon(
     modifier: Modifier = Modifier
 ) {
     BoxWithConstraints(modifier = modifier) {
-        val constraints = this.constraints // Extraire les contraintes
+        val constraints = this.constraints
         Row {
             Text(
                 text = participantName,
@@ -192,7 +179,6 @@ private fun StatusWithIcon(
                         modifier = Modifier.weight(1f)
                     )
                 }
-                // Calculer la position de l'icône en fonction de la largeur de l'élément parent
                 val iconWidth = with(LocalDensity.current) { dimensionResource(R.dimen.progress_indicator_height).toPx() }
                 val iconPosition = (progressFactor *0.25f * (constraints.maxWidth - iconWidth)).coerceAtLeast(0f)
                 Icon(
